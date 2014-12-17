@@ -1,0 +1,17 @@
+#!/bin/bash
+
+echo " -> Removing docker images"
+docker rm -f db1_master
+
+echo " -> Rebuilding the image from current directory"
+docker build -t klevo/test_mysql_master .
+
+echo " -> Run the new master and slave containers"
+docker run -d --name db1_master \
+  --hostname db1_master \
+  klevo/test_mysql_master
+
+echo " -> Done."
+docker ps
+
+docker exec -i -t db1_master bash

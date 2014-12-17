@@ -4,7 +4,8 @@ FROM dockerfile/percona
 RUN apt-get update && apt-get install -y openssh-server
 
 RUN useradd -d /home/tunnels -m tunnels && \
-  sed -i "s/^\(AllowUsers\).*/\1 root tunnels/" /etc/ssh/sshd_config
+  sed -i "s/^\(AllowUsers\).*/\1 root tunnels/" /etc/ssh/sshd_config && \
+  service ssh start
 
 ADD keys/* /home/tunnels/.ssh/
 RUN chmod 0700 /home/tunnels/.ssh && \
