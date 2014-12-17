@@ -10,6 +10,7 @@ ADD keys/* /home/tunnels/.ssh/
 RUN chmod 0700 /home/tunnels/.ssh && \
   chmod 0600 /home/tunnels/.ssh/id_rsa && \
   chmod 0644 /home/tunnels/.ssh/id_rsa.pub && \
+  cat /home/tunnels/.ssh/id_rsa.pub > /home/tunnels/.ssh/authorized_keys && \
   chown -R tunnels:tunnels /home/tunnels/.ssh
 
 # Define mountable directories.
