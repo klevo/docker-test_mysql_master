@@ -16,6 +16,8 @@ RUN chmod 0700 /home/tunnels/.ssh && \
 # Define mountable directories.
 VOLUME ["/etc/mysql", "/var/lib/mysql", "/backups"]
 
+ADD my.cnf /etc/mysql/my.cnf
+
 ADD start /start
 # Define default command.
 CMD ["/start"]
