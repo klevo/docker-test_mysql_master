@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo " -> Removing docker images"
-docker rm -f db1_master
+docker rm -vf db1_master
 
 echo " -> Rebuilding the image from current directory"
 docker build -t klevo/test_mysql_master .
